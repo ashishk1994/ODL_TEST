@@ -1,0 +1,44 @@
+{'locator_id': 'ISP1'}
+{'hop_id': 'Hop 1'}
+{'hop_id': 'Hop 2'}
+{
+    "input": {
+        "LocatorRecord": {
+            "ISP1": {
+                "locator-id": "ISP1", 
+                "rlocProbed": false, 
+                "weight": 1, 
+                "multicastPriority": 255, 
+                "localLocator": true, 
+                "routed": false, 
+                "priority": 1, 
+                "rloc": {
+                    "address-type": "ietf-lisp-address-types:explicit-locator-path-lcaf", 
+                    "explicit-locator-path": {
+                        "hop": {
+                            "Hop 1": {
+                                "__yang_order": 0, 
+                                "hop-id": "Hop 1", 
+                                "lrs-bits": "lookup rloc-prob strict", 
+                                "address": "20.20.20.20"
+                            }, 
+                            "Hop 2": {
+                                "__yang_order": 1, 
+                                "hop-id": "Hop 2", 
+                                "lrs-bits": "lookup strict", 
+                                "address": "30.30.30.30"
+                            }
+                        }
+                    }
+                }, 
+                "multicastWeight": 0
+            }
+        }, 
+        "mapping-record": {
+            "recordTtl": 1440, 
+            "action": "NoAction", 
+            "authoritative": true, 
+            "mapVersion": 10
+        }
+    }
+}

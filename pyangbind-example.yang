@@ -1,0 +1,176 @@
+module pyangbind-example {
+	namespace "urn:ietf:params:xml:ns:yang:ietf-lisp-address-types";
+	prefix laddr;
+
+	organization "IETF LISP (Locator/ID Separation Protocol) Working Group";
+
+	contact "lisp@ietf.org";
+
+	description "This YANG module defines the LISP Canonical Address Formats
+		(LCAF) for LISP. The module can be extended by vendors to
+		define vendor-specific parameters.
+
+		Copyright (c) 2014 IETF Trust and the persons identified as
+		authors of the code.  All rights reserved.
+
+		Redistribution and use in source and binary forms, with or
+		without modification, is permitted pursuant to, and subject
+		to the license terms contained in, the Simplified BSD License
+		set forth in Section 4.c of the IETF Trust's Legal Provisions
+		Relating to IETF Documents
+		(http://trustee.ietf.org/license-info).
+
+		This version of this YANG module is part of RFC 6338; see
+		the RFC itself for full legal notices.
+
+		";
+
+	revision 2015-11-05 {
+		description
+			"Initial revision.";
+		reference
+			"http://tools.ietf.org/html/draft-ietf-lisp-lcaf-10";
+	}
+
+	grouping mapping-record-container{
+		container mapping-record {
+			leaf recordTtl {
+				type int32;
+			}
+			leaf maskLength {
+				type uint8;
+			}
+			leaf mapVersion {
+				type int16;
+			}
+			leaf action {
+				type enumeration {
+					enum NoAction;
+					enum NativelyForward;
+					enum SendMapRequest;
+					enum Drop;
+				}
+			}
+			leaf authoritative {
+				type boolean;
+			}
+		}
+	}
+	typedef simple-address {
+		type union {
+			/*
+			   Content is changed because of inet referencing.
+			 */
+			type string;
+			type string;
+			type string;
+			type string;
+			type string;
+
+			//type inet:ip-address;
+			//type inet:ip-prefix;
+			//type yang:mac-address;
+			//type distinguished-name-type;
+			//type inet:as-number;
+		}
+		description
+			"Union of address types that can be part of LCAFs.";
+	}
+
+	identity lisp-address-family {
+		description
+			"Base identity from which identities describing LISP address
+			families are derived.";
+	}
+	typedef lisp-address-family-ref {
+		type identityref {
+			base lisp-address-family;
+		}
+		description
+			"LISP address family reference.";
+	}
+	grouping lisp-address {
+		description
+			"Generic LISP address.";
+		leaf address-type {
+			/* 
+			   Content type is changed because of type not defined in any of the base class
+			 */
+			type string;//lisp-address-family-ref;
+			mandatory true;
+			description
+				"Type of the LISP address.";
+		}
+		container explicit-locator-path {
+			when "../../address-type = 'explicit-locator-path-lcaf'" {
+				description
+					"When LCAF type type is Explicit Locator Path.";
+			}
+			description
+				"Explicit Locator Path LCAF type.";
+			reference
+				"http://tools.ietf.org/html/draft-ietf-lisp-lcaf-10
+#section-4.9";
+				list hop {
+					key "hop-id";
+					ordered-by user;
+					description
+						"List of locator hops forming the explicit path.";
+					leaf hop-id {
+						type string;
+						description
+							"Unique identifier for the hop.";
+					}
+					leaf address {
+						type simple-address;
+						description
+							"AFI address.";
+					}
+					leaf lrs-bits {
+						type string;
+						description
+							"Flag bits per hop.";
+					}
+				}
+		}
+	}
+	grouping rloc-container {
+		container rloc {
+			uses lisp-address;
+		}
+	}
+	grouping LocatorRecords {
+		list LocatorRecord {
+			key "locator-id";
+			leaf locator-id {
+				type string;
+			}
+			leaf priority {
+				type uint8;
+			}
+			leaf weight {
+				type uint8;
+			}
+			leaf multicastPriority {
+				type uint8;
+			}
+			leaf multicastWeight {
+				type uint8;
+			}
+			leaf localLocator {
+				type boolean;
+			}
+			leaf rlocProbed {
+				type boolean;
+			}
+			leaf routed {
+				type boolean;
+			}
+			uses rloc-container;
+		}
+	}
+	container input{
+		uses LocatorRecords;
+		uses mapping-record-container;
+	}
+}
