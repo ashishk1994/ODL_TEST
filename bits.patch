@@ -1,78 +1,32 @@
---- odl-lispflowmapping-yang-files/ietf-lisp-address-types.yang	2016-05-17 22:55:44.998603863 +0530
-+++ ietf-lisp-address-types.yang	2016-05-17 23:05:14.702612733 +0530
-@@ -3,11 +3,11 @@
-   prefix laddr;
-   import ietf-inet-types {
-     prefix inet;
--    revision-date 2010-09-24;
-+    revision-date 2013-07-15;
-   }
-   import ietf-yang-types {
-     prefix yang;
--    revision-date 2010-09-24;
-+    revision-date 2013-07-15;
-   }
-   organization
-     "IETF LISP (Locator/ID Separation Protocol) Working Group";
-@@ -449,7 +449,7 @@
-         reference
-           "http://tools.ietf.org/html/draft-ietf-lisp-lcaf-10
-            #section-4.5";
--        leaf latitude {
-+        /*leaf latitude {
-           type bits {
-             bit N {
-               description
-@@ -458,7 +458,7 @@
-           }
-           description
-             "Bit that selects between North and South latitude.";
--        }
-+        }*/
-         leaf latitude-degrees {
-           type uint8 {
-             range "0 .. 90";
-@@ -480,7 +480,7 @@
-           description
-             "Seconds of latitude.";
-         }
--        leaf longitude {
-+        /*leaf longitude {
-           type bits {
-             bit E {
-               description
-@@ -489,7 +489,7 @@
-           }
-           description
-             "Bit that selects between East and West longitude.";
--        }
-+        }*/
-         leaf longitude-degrees {
-           type uint16 {
-             range "0 .. 180";
-@@ -588,7 +588,7 @@
-             description
-               "AFI address.";
-           }
--          leaf lrs-bits {
-+          /*leaf lrs-bits {
-             type bits{
-               bit lookup {
-                 description
-@@ -605,7 +605,7 @@
-             }
-             description
-               "Flag bits per hop.";
--          }
-+          }*/
-         }
-       }
-       container source-dest-key {
-@@ -672,4 +672,7 @@
-       }
-     }
-   }
-+  container eid{
-+    uses lisp-address;
-+  }
- }
+6c6
+<     revision-date 2010-09-24;
+---
+>     revision-date 2013-07-15;
+10c10
+<     revision-date 2010-09-24;
+---
+>     revision-date 2013-07-15;
+452c452
+<         leaf latitude {
+---
+>         /*leaf latitude {
+461c461
+<         }
+---
+>         }*/
+483c483
+<         leaf longitude {
+---
+>         /*leaf longitude {
+492c492
+<         }
+---
+>         }*/
+591c591
+<           leaf lrs-bits {
+---
+>           /*leaf lrs-bits {
+608c608
+<           }
+---
+>           }*/
