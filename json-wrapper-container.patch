@@ -1,0 +1,5 @@
+496,499d495
+<     container json-container-wrapper{
+<     	uses eid-container;
+<     	uses mapping-record-container;
+<     }
