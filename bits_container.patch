@@ -1,3 +1,4 @@
+diff orig/ietf-lisp-address-types.yang updated/ietf-lisp-address-types.yang
 452c452
 <         leaf latitude {
 ---
@@ -22,3 +23,9 @@
 <           }
 ---
 >           }*/
+diff orig/odl-lisp-proto.yang updated/odl-lisp-proto.yang
+495a496,499
+> 
+>     container json-container-wrapper{
+>         uses mapping-record-container;
+>     }
