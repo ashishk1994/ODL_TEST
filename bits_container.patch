@@ -1,6 +1,5 @@
-Only in orig: bits_container.patch
-diff -c orig/ietf-lisp-address-types.yang updated/ietf-lisp-address-types.yang
-*** orig/ietf-lisp-address-types.yang	2016-05-23 23:21:50.707847200 +0530
+diff -c odl-lispflowmapping-yang-files/ietf-lisp-address-types.yang updated/ietf-lisp-address-types.yang
+*** odl-lispflowmapping-yang-files/ietf-lisp-address-types.yang	2016-05-23 23:16:43.203859361 +0530
 --- updated/ietf-lisp-address-types.yang	2016-05-23 23:15:30.015862257 +0530
 ***************
 *** 449,455 ****
@@ -104,8 +103,8 @@ diff -c orig/ietf-lisp-address-types.yang updated/ietf-lisp-address-types.yang
           }
         }
         container source-dest-key {
-diff -c orig/odl-lisp-proto.yang updated/odl-lisp-proto.yang
-*** orig/odl-lisp-proto.yang	2016-05-23 23:21:50.707847200 +0530
+diff -c odl-lispflowmapping-yang-files/odl-lisp-proto.yang updated/odl-lisp-proto.yang
+*** odl-lispflowmapping-yang-files/odl-lisp-proto.yang	2016-05-23 23:17:12.531858200 +0530
 --- updated/odl-lisp-proto.yang	2016-05-23 23:15:45.163861655 +0530
 ***************
 *** 493,496 ****

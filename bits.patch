@@ -1,0 +1,24 @@
+452c452
+<         leaf latitude {
+---
+>         /*leaf latitude {
+461c461
+<         }
+---
+>         }*/
+483c483
+<         leaf longitude {
+---
+>         /*leaf longitude {
+492c492
+<         }
+---
+>         }*/
+591c591
+<           leaf lrs-bits {
+---
+>           /*leaf lrs-bits {
+608c608
+<           }
+---
+>           }*/
